@@ -7,23 +7,8 @@ function cityTable1(address, inputField, resultRegion) {
   var data = "cityType=" + getValue(inputField);
   ajaxPost(address, data, 
            function(request) { 
-             showCityInfo1(request, resultRegion); 
+             showCityInfo2(request, resultRegion); 
            });
-}
-
-// Data that arrives is JSON object with two properties:
-//  - headings (an array of strings for the th elements)
-//  - cities (an array of array of strings 
-//            matching the heading names)
-
-function showCityInfo1(request, resultRegion) {
-  if ((request.readyState == 4) &&
-      (request.status == 200)) {
-    var rawData = request.responseText;
-    var data = eval("(" + rawData + ")");
-    var table = getTable(data.headings, data.cities);
-    htmlInsert(resultRegion, table);
-  }
 }
 
 function cityTable2(address, inputField, resultRegion) {
